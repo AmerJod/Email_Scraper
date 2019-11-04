@@ -3,7 +3,7 @@ import emails_scraper
 from _tests.fexture import file_1, file_2, file_3
 
 # Expected results
-expected_emails_1 = "product@hackerrank.com, hackers@hackerrank.com, interviewstreet@hackerrank.com, info [at] legalist [dot] com, christian @ legalist . com, benjamin/at/legalist/dot/com"
+expected_emails_1 = "product@hackerrank.com, hackers@hackerrank.com, interviewstreet@hackerrank.com, info [at] legalist [dot] com, christian @ legalist . com,  b r i a n @ l e g a l i s t . c o m , benjamin/at/legalist/dot/com"
 expected_emails_2 = "mpotts@ngs.org, jbmccorm@ngs.org, ngsline@customersvc.com, ngsdigital@customersvc.com, givinginfo@ngs.org, askngs@nationalgeographic.com, genographic@ngs.org, genographicespanol@ngs.org, apps@ngs.org, feedback@natgeotv.com, online at nationalgeographicexpeditions.com, ngsforum@nationalgeographic.com, maps@ngs.org, stock@ngs.org, ngassignment@ngs.org, newsdesk@nationalgeographic.com, pressroom@ngs.org, speakers@ngs.org, topo@ngs.org, traveler@ngs.org"
 expected_emails_3 = "mpotts@ngs.org, jbmccorm@ngs.org, ngsline@customersvc.com, ngsdigital@customersvc.com, givinginfo@ngs.org, askngs@nationalgeographic.com, genographic@ngs.org, genographicespanol@ngs.org, apps@ngs.org, feedback@natgeotv.com, online at nationalgeographicexpeditions.com, ngsforum@nationalgeographic.com, maps@ngs.org, stock@ngs.org, ngassignment@ngs.org, newsdesk@nationalgeographic.com, pressroom@ngs.org, speakers@ngs.org, topo@ngs.org, traveler@ngs.org"
 
@@ -25,4 +25,5 @@ class EmailFinderTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(EmailFinderTest)
+    unittest.TextTestRunner(verbosity=2).run(suite)

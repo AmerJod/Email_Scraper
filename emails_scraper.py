@@ -3,12 +3,13 @@ import os.path
 import re
 
 # Regular expressions. / need more work to cover/handle more cases
-regex_rules = (
+regex_rules1 = (
     "([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*(@|\s@\s|\/at\/|\sat\s|\[at\]"
     "|\s\(at\)\s|\s\[at\]\s|\s\(\sat\s\)\s)(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(\.|\s\.\s|\/dot\/|\[dot\]"
     "|\sdot\s|\s\(dot\)\s|\s\[dot\]\s)|\s\(\sdot\s\)\s)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
 )
 
+regex_rules= r'(\w+|(\s\w)+)\s*(@|\Wat\W)\s*(\w+|(\w\s)+)\s*(\.|\Wdot\W)\s*((\w\s)+|\w+)'
 
 regex = re.compile(regex_rules)
 
@@ -38,7 +39,7 @@ def get_emails(string):
     # convert it the full text to lower case to prevent regex mismatches.
     string = string.lower()
 
-    list_of_emails = re.findall(regex, string)
+    list_of_emails = re.finditer(regex, string)
 
     # Remove the duplications
     unique_emails = list(dict.fromkeys([email[0] for email in list_of_emails]))
